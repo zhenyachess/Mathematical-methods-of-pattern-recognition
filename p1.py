@@ -78,23 +78,23 @@ init_display()
 
 cnt=0
 while True:
-		cnt_error=0
-		print(f'---\nПроход цикла под шагом {cnt+1}')
-		for i in range(len(Points)): 
-			net = calcNet(Points[i], W)
-			if checkNet(net, result[i]) == False:
-					W = calcW(0.2, W, Points[i], result[i], net)
-					cnt_error+=1
-					print(f'Результат сети на {i+1} шаге: {net}')
-					print(f'Значения весов на {i+1} шаге: {W}')
-			pg.draw.line(screen, GREEN, [-size_x/2+size_x/2,size_y/2-value_line(-size_x/2,W)],[size_x/2+size_x/2,size_y/2-value_line(size_x/2, W)],3)
-			pg.display.update()
-			pg.time.delay(50)
-			init_display()
-		print(f'Количество ошибок на {cnt+1} шаге внешнего цикла: {cnt_error}')
-		print('---')
-		cnt+=1
-		if cnt_error == 0: break
+	cnt_error=0
+	print(f'---\nПроход цикла под шагом {cnt+1}')
+	for i in range(len(Points)): 
+		net = calcNet(Points[i], W)
+		if checkNet(net, result[i]) == False:
+				W = calcW(0.2, W, Points[i], result[i], net)
+				cnt_error+=1
+				print(f'Результат сети на {i+1} шаге: {net}')
+				print(f'Значения весов на {i+1} шаге: {W}')
+		pg.draw.line(screen, GREEN, [-size_x/2+size_x/2,size_y/2-value_line(-size_x/2,W)],[size_x/2+size_x/2,size_y/2-value_line(size_x/2, W)],3)
+		pg.display.update()
+		pg.time.delay(50)
+		init_display()
+	print(f'Количество ошибок на {cnt+1} шаге внешнего цикла: {cnt_error}')
+	print('---')
+	cnt+=1
+	if cnt_error == 0: break
 
 pg.draw.line(screen, GREEN, [-size_x/2+size_x/2,size_y/2-value_line(-size_x/2,W)],[size_x/2+size_x/2,size_y/2-value_line(size_x/2, W)],3)
 pg.display.update()
